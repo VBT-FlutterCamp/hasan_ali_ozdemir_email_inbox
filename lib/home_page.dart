@@ -102,6 +102,18 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(16)),
                   color: Colors.white),
               child: ListTile(
+                trailing: Container(
+    width: context.dynamicWidth(44/375),
+    height: context.dynamicHeight(44/812),
+    child: Icon(Icons.delete,color: warmBlue,),
+    decoration: BoxDecoration(
+      borderRadius: const BorderRadius.all(
+      Radius.circular(8) 
+    ),
+      color: warmBlue.withOpacity(0.1)
+  )
+  ),
+
                 title: Text(
                   titles[index],
                   style: TextStyles.listTileTitleTheme,

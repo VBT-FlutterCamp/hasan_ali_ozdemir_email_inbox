@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main_screen_homework/bottom_bar.dart';
+import 'package:main_screen_homework/components/bottom_bar.dart';
 import 'package:main_screen_homework/constants.dart';
 import 'package:kartal/kartal.dart';
 

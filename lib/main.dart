@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:main_screen_homework/home_page.dart';
-import 'package:main_screen_homework/onboard_page.dart';
+import 'package:main_screen_homework/screens/home_page.dart';
+import 'package:main_screen_homework/screens/onboard_page.dart';
 
 void main() {
   runApp(const MyApp());

@@ -2,10 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:main_screen_homework/components/bottom_bar.dart';
 import 'package:main_screen_homework/constants.dart';
 import 'package:kartal/kartal.dart';
+import 'package:main_screen_homework/models/todo.dart';
+import 'package:main_screen_homework/services/service.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<ToDo> todos = [];
+  @override
+  void initState() {
+    _getTpas();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +61,7 @@ class HomePage extends StatelessWidget {
             ),
             Expanded(
               flex: 481 - 8,
-              child: _buildList(context),
+              child: (todos.isNullOrEmpty) ? _buildLoading(): _buildList(context),
             )
           ],
         ),
@@ -86,15 +99,21 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  _buildLoading(){
+    return const Center(
+      child: CircularProgressIndicator.adaptive(),
+    );
+  }
+
   _buildList(context) {
     return MediaQuery.removePadding(
       removeTop: true,
       context: context,
       child: ListView.builder(
-        itemCount: titles.length,
+        itemCount: todos.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical:4.0),
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
             child: Container(
               width: 343,
               height: 76,
@@ -103,24 +122,23 @@ class HomePage extends StatelessWidget {
                   color: Colors.white),
               child: ListTile(
                 trailing: Container(
-    width: context.dynamicWidth(44/375),
-    height: context.dynamicHeight(44/812),
-    child: Icon(Icons.delete,color: warmBlue,),
-    decoration: BoxDecoration(
-      borderRadius: const BorderRadius.all(
-      Radius.circular(8) 
-    ),
-      color: warmBlue.withOpacity(0.1)
-  )
-  ),
-
+                    width: context.dynamicWidth(44 / 375),
+                    height: context.dynamicHeight(44 / 812),
+                    child: IconButton(onPressed:()=> _onTapDelete(todos[index]), icon:const Icon(
+                      Icons.delete,
+                      color: warmBlue,
+                    ),),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                        color: warmBlue.withOpacity(0.1))),
                 title: Text(
-                  titles[index],
+                  todos[index].title,
                   style: TextStyles.listTileTitleTheme,
                   textAlign: TextAlign.left,
                 ),
                 subtitle: Text(
-                  urls[index],
+                  todos[index].id.toString(),
                   style: TextStyles.listTileSubTitleIndex,
                   textAlign: TextAlign.left,
                   overflow: TextOverflow.fade,
@@ -131,5 +149,18 @@ class HomePage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  _onTapDelete(todo){
+    setState(() {
+      todos.remove(todo);
+    });
+  }
+
+  _getTpas()async{
+    var _ref =await ServiceHelper().getTodos();
+    setState(() {
+      todos = _ref;
+    });
   }
 }

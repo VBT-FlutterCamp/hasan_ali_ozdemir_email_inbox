@@ -79,24 +79,6 @@ static const TextStyle onBoardDescStyle2 = TextStyle(
 );
 }
 
-const List<String> titles = [
-  "Coding Journey",
-  "Smashing Magazine",
-  "UX Labs",
-  "The Netlify Blog",
-  "Student Life",
-  "Hello.io"
-];
-
-const List<String> urls = [
-  "www.coding-journey.io",
-  "https://www.smashingmagazine",
-  "https://uxlabs.co",
-  "https://www.netlify.com/tags/newsl",
-  "https://ulife.com/student-life/",
-  "https://hello.io/job-postings/"
-];
-
 const List<String> iconsPaths = [
   "assets/icons/folder.svg",
   "assets/icons/settings.svg",

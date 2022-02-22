@@ -4,8 +4,6 @@ Hasan Ali Özdemir
 
 ## In app images
 
-![Alt Text](https://github.com/VBT-FlutterCamp/hasan_ali_ozdemir_email_inbox/blob/main/home.png)
-
-![Alt Text](https://github.com/VBT-FlutterCamp/hasan_ali_ozdemir_email_inbox/blob/main/onboard.png)
+![Alt Text](https://github.com/VBT-FlutterCamp/hasan_ali_ozdemir_email_inbox/blob/main/gif.gif)
 
 
